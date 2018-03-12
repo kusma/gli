@@ -7,6 +7,12 @@ platform:
   - x86
   - x86_64
 
+install:
+  - ps: (New-Object Net.WebClient).DownloadFile('http://coapp.org/files/CoApp.Tools.Powershell.msi', "$($env:USERPROFILE)\CoApp.Tools.Powershell.msi")
+  - ps: Start-Process -FilePath msiexec -ArgumentList /i, "$($env:USERPROFILE)\CoApp.Tools.Powershell.msi", /quiet -Wait
+  - ps: $env:PSModulePath = $env:PSModulePath + ';C:\Program Files (x86)\Outercurve Foundation\Modules'
+  - ps: Import-Module CoApp
+
 build_script:
 - md build
 - cd build
@@ -14,4 +20,7 @@ build_script:
 - cmake --build . --config Debug
 - cmake --build . --config Release
 - cd ..
+- ps: Write-NuGetPackage nuget.autopkg
 
+artifacts:
+  - path: gli.0.8.2.nupkg

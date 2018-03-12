@@ -1,0 +1,27 @@
+nuget {
+	nuspec {
+		id = gli;
+		version : 0.8.2;
+		title: OpenGL Image;
+		authors: {G-Truc Creation};
+		owners: {Erik Faye-Lund};
+		licenseUrl: "https://github.com/g-truc/gli/blob/master/manual.md#the-happy-bunny-license-modified-mit-license";
+		projectUrl: "http://gli.g-truc.net";
+		iconUrl: "http://gli.g-truc.net/common/logo.png";
+		requireLicenseAcceptance: false;
+		summary: @"Effective texture loading, access and processing. A C++ image library based on OpenGL conventions.";
+
+		description: @"OpenGL Image (GLI) is a header only C++ image library for graphics software. *GLI* provides classes and functions to load image files (KTX and (DDS), facilitate graphics APIs texture creation, compare textures, access texture texels, sample textures, convert textures, generate mipmaps, etc.";
+		releaseNotes: "Release 0.8.2 of gli";
+		copyright: "Copyright (c) 2010 - 2017 G-Truc Creation";
+		tags: { OpenGL, Image, KTX, DDS, native };
+	}
+
+	files {
+		nestedInclude: {
+			#destination = ${d_include}gli;
+			"gli\**\*.hpp",
+			"gli\**\*.inl"
+		};
+	}
+}
